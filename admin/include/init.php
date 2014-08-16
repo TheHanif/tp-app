@@ -11,8 +11,3 @@ session_start();
 require_once '../config.php';
 require_once '../include/class.database.php';
 require_once 'classes/class.user.php';
-
-
-
-
-
