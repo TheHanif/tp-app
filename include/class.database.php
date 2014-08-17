@@ -22,6 +22,7 @@ class Database {
     private $_action;
     private $_limit;
     private $_table;
+    private $_table_prefix;
     private $_data;
     private $_joins = array();
 
@@ -35,6 +36,8 @@ class Database {
         } catch (PDOException $e) {
             echo 'ERROR: ' . $e->getMessage();
         }
+
+        $this->_table_prefix = TABLE_PREFIX;
     }
 
     /**
@@ -208,7 +211,7 @@ class Database {
         if ($this->_action == 'INSERT') {
             $query .= ' INTO';
         }
-        $query .= $this->_table;
+        $query .= $this->_table_prefix.$this->_table;
 
         if (!empty($this->_joins)) {
             $query .= ' ';
